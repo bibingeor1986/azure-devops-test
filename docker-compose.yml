@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web:
+    image: nodejs-testcontainer-app
+    build: .
+    networks:
+      - backend
+    command: npm run dev
+    volumes:
+      - .:/app/
+      - /app/node_modules
+    ports:
+      - "5000:5000"
+
+networks:
+  backend:
+    driver: bridge
